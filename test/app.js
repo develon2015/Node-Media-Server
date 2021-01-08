@@ -1,4 +1,4 @@
-const NodeMediaServer = require('./');
+const NodeMediaServer = require('../');
 
 const config = {
   rtmp: {
@@ -24,8 +24,8 @@ const config = {
   },
   https: {
     port: 8443,
-    key: './privatekey.pem',
-    cert: './certificate.pem',
+    key: __dirname + '/privatekey.pem',
+    cert: __dirname + '/certificate.pem',
   },
   auth: {
     api: true,

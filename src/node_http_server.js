@@ -13,12 +13,12 @@ const WebSocket = require('ws');
 const Express = require('express');
 const bodyParser = require('body-parser');
 const basicAuth = require('basic-auth-connect');
-const NodeFlvSession = require('./node_flv_session');
+const NodeFlvSession = require('./core/node_flv_session');
 const HTTP_PORT = 80;
 const HTTPS_PORT = 443;
 const HTTP_MEDIAROOT = './media';
-const Logger = require('./node_core_logger');
-const context = require('./node_core_ctx');
+const Logger = require('./core/node_core_logger');
+const context = require('./core/node_core_ctx');
 
 const streamsRoute = require('./api/routes/streams');
 const serverRoute = require('./api/routes/server');
@@ -48,7 +48,7 @@ class NodeHttpServer {
       this.onConnect(req, res);
     });
 
-    let adminEntry = path.join(__dirname + '/public/admin/index.html');
+    let adminEntry = path.join(__dirname + './../public/admin/index.html');
     if (Fs.existsSync(adminEntry)) {
       app.get('/admin/*', (req, res) => {
         res.sendFile(adminEntry);
@@ -64,7 +64,7 @@ class NodeHttpServer {
       app.use('/api/relay', relayRoute(context));
     }
 
-    app.use(Express.static(path.join(__dirname + '/public')));
+    app.use(Express.static(path.resolve(__dirname + './../public')));
     app.use(Express.static(this.mediaroot));
     if (config.http.webroot) {
       app.use(Express.static(config.http.webroot));
