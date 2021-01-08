@@ -8,7 +8,7 @@
 ![logo](https://www.nodemedia.cn/uploads/site_logo.png)
 
 一个 Node.js 实现的RTMP/HTTP/WebSocket/HLS/DASH流媒体服务器
-[English Docs](https://github.com/illuspas/Node-Media-Server/blob/master/README_CN.md)  
+[English Docs](./README_en.md)  
 
 # 特性
  - 跨平台支持 Windows/Linux/Unix
